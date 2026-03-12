@@ -1,0 +1,13 @@
+{
+  "name": "cm-ai-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared Claude Code skills library for Collective Measures Practix prototypes",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync-to-drive.mjs"
+  },
+  "dependencies": {
+    "googleapis": "^144.0.0"
+  }
+}

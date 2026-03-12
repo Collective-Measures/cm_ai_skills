@@ -1,0 +1,59 @@
+name: Sync Skills to Google Drive
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+      - 'CLAUDE.md'
+      - 'scripts/sync-to-drive.mjs'
+
+  workflow_dispatch: # Manual trigger
+
+permissions:
+  contents: read
+  id-token: write # Required for Workload Identity Federation
+
+env:
+  PROJECT_ID: iconic-glider-100518
+  WORKLOAD_IDENTITY_POOL: projects/230593617634/locations/global/workloadIdentityPools/github-actions
+
+jobs:
+  sync:
+    name: Sync to Google Drive
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_POOL }}/providers/cm-ai-skills-provider
+          service_account: github-actions-wif@iconic-glider-100518.iam.gserviceaccount.com
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync skills to Google Drive
+        env:
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: node scripts/sync-to-drive.mjs
+
+      - name: Summary
+        run: |
+          echo "### Skills synced to Google Drive" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| File | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
+          for f in skills/*.md; do
+            echo "| $(basename $f) | synced |" >> $GITHUB_STEP_SUMMARY
+          done
