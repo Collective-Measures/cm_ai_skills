@@ -162,7 +162,7 @@ Browse the **skills-docs/** folder for formatted, readable versions of each skil
 Point your agent to the **skills-md/** folder. Raw markdown files are optimized for agent consumption.
 
 Tell your agent:
-> "Build this following the Practix design system. Read the skills files in the CM AI Skills shared Drive folder: https://drive.google.com/drive/u/0/folders/0AGf8K3k5ulRuUk9PVA"
+> "Build this following the Practix design system. Read the skills index at https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/CLAUDE.md and follow the skills it links to."
 
 ## Available Skills
 

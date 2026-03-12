@@ -12,22 +12,24 @@ Copy or symlink the relevant skill files into your project's `.claude/` director
 
 ```markdown
 # In your project's CLAUDE.md
-See /Users/bill.roehl/code/cm_ai_skills/skills/ for Practix platform design standards.
-When building UI, follow the Practix design system documented there.
+When building UI, follow the Practix design system. Read the skills index at:
+https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/CLAUDE.md
 ```
 
 ### For Non-Developers
-Tell your Claude Code agent: "Build this following the Practix design system. Read the skills files in the CM AI Skills shared Drive folder: https://drive.google.com/drive/u/0/folders/0AGf8K3k5ulRuUk9PVA"
+Tell your Claude Code agent: "Build this following the Practix design system. Read the skills index at https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/CLAUDE.md and follow the skills it links to."
+
+Skills are also available as formatted Google Docs in the shared Drive folder: https://drive.google.com/drive/u/0/folders/0AGf8K3k5ulRuUk9PVA
 
 ## Skills Index
 
-| Skill | File | Purpose |
-|-------|------|---------|
-| Prototype Scaffold | `skills/practix-prototype-scaffold.md` | Project setup, tech stack, and file structure for new prototypes |
-| Design System | `skills/practix-design-system.md` | Colors, typography, spacing, and design tokens |
-| Component Patterns | `skills/practix-component-patterns.md` | Reusable UI component code (sidebar, cards, tables, forms) |
-| Data Visualization | `skills/practix-data-viz.md` | Recharts patterns, KPI cards, and number formatting |
-| Quality Checklist | `skills/practix-quality-checklist.md` | Pre-review checklist to catch common prototype issues |
+| Skill | Raw URL | Purpose |
+|-------|---------|---------|
+| Prototype Scaffold | https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/skills/practix-prototype-scaffold.md | Project setup, tech stack, and file structure for new prototypes |
+| Design System | https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/skills/practix-design-system.md | Colors, typography, spacing, and design tokens |
+| Component Patterns | https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/skills/practix-component-patterns.md | Reusable UI component code (sidebar, cards, tables, forms) |
+| Data Visualization | https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/skills/practix-data-viz.md | Recharts patterns, KPI cards, and number formatting |
+| Quality Checklist | https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/skills/practix-quality-checklist.md | Pre-review checklist to catch common prototype issues |
 
 ## Platform References
 - **Practix Hub** (main portal): `~/code/cm_practix_hub`

@@ -100,7 +100,7 @@ Open the shared Drive folder → browse **skills-docs/** → read the formatted 
 
 ### Non-developers (with Claude Code agents)
 Tell the agent:
-> "Build this following the Practix design system. Read the skills files in the CM AI Skills shared Drive folder: https://drive.google.com/drive/u/0/folders/0AGf8K3k5ulRuUk9PVA"
+> "Build this following the Practix design system. Read the skills index at https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/CLAUDE.md and follow the skills it links to."
 
 If the user has Google Drive for Desktop syncing, the agent can read the files directly from their local `~/Google Drive/` path.
 
