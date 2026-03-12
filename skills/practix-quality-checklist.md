@@ -1,7 +1,7 @@
 # Practix Prototype Quality Checklist
 
 ## When to Use This Skill
-Run through this checklist before sharing any prototype for review. It catches the most common issues that make prototypes look "off-brand" relative to the Practix platform.
+Run through this checklist before sharing any prototype for review. It catches the most common issues that make prototypes look "off-brand" relative to the Practix platform. This should be the last step before requesting a code review or stakeholder demo.
 
 ---
 
