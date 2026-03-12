@@ -17,7 +17,7 @@ When building UI, follow the Practix design system documented there.
 ```
 
 ### For Non-Developers
-Tell your Claude Code agent: "Build this following the Practix design system skills in ~/code/cm_ai_skills/skills/"
+Tell your Claude Code agent: "Build this following the Practix design system. Read the skills files in the CM AI Skills shared Drive folder: https://drive.google.com/drive/u/0/folders/0AGf8K3k5ulRuUk9PVA"
 
 ## Skills Index
 
