@@ -1,7 +1,7 @@
 # Practix Component Patterns — Copy-Paste Reference
 
 ## When to Use This Skill
-Use these exact component patterns when building UI for Practix-style prototypes. These are extracted from the production Practix Hub and Meridian codebases. Copy, adapt, and extend — but do not deviate from the structural patterns.
+Use these exact component patterns when building UI for Practix-style prototypes. These are extracted from the production Practix Portal and Practix MMM codebases. Copy, adapt, and extend — but do not deviate from the structural patterns.
 
 ---
 

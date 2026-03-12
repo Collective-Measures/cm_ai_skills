@@ -1,7 +1,7 @@
 # Practix Design System — Color, Typography & Spacing Reference
 
 ## When to Use This Skill
-Reference this whenever building UI that should match the Practix platform visual language. These are the exact values used in Practix Hub and Meridian MMM.
+Reference this whenever building UI that should match the Practix platform visual language. These are the exact values used in Practix Portal and Practix MMM.
 
 ---
 
@@ -35,7 +35,7 @@ Used for interactive elements, active states, focus rings, and primary actions.
 | `blue-700` | #1d4ed8 | Button hover state |
 
 ### Secondary Accent: Teal
-Used in Meridian MMM for positive metrics and secondary emphasis.
+Used in Practix MMM for positive metrics and secondary emphasis.
 
 | Token | Hex | Usage |
 |-------|-----|-------|
@@ -54,10 +54,10 @@ Used in Meridian MMM for positive metrics and secondary emphasis.
 | Caution | `yellow-50` / `yellow-100` | `yellow-700` | `yellow-200` |
 | Info | `blue-50` | `blue-700` | `blue-200` |
 
-**Important**: Meridian prefers softer status colors. Use teal-500/60 + teal-700 for positive and orange-400/60 + orange-600 for negative, rather than sharp green/red. Hub uses standard green/red.
+**Important**: Practix MMM prefers softer status colors. Use teal-500/60 + teal-700 for positive and orange-400/60 + orange-600 for negative, rather than sharp green/red. Practix Portal uses standard green/red.
 
-### Semantic Color Mapping (Meridian Theme System)
-Meridian uses CSS variables for multi-client theming. The Practix default values:
+### Semantic Color Mapping (Practix MMM Theme System)
+Practix MMM uses CSS variables for multi-client theming. The Practix default values:
 
 ```css
 --color-header-bg: #1e293b;      /* slate-800 */

@@ -31,7 +31,7 @@ Tell your Claude Code agent: "Build this following the Practix design system. Re
 | Quality Checklist | https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/skills/practix-quality-checklist.md | Pre-review checklist to catch common prototype issues |
 
 ## Platform References
-- **Practix Hub** (main portal): `~/code/cm_practix_hub`
-- **Meridian MMM** (analytics tool): `~/code/cm_meridian`
-- **Live Hub**: https://hub.collectivemeasures.com
+- **Practix Portal** (main portal): `~/code/cm_practix_hub`
+- **Practix MMM** (analytics tool): `~/code/cm_meridian`
+- **Live Portal**: https://hub.collectivemeasures.com
 - **Live MMM**: https://mmm.collectivemeasures.com

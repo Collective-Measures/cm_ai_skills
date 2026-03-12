@@ -17,7 +17,7 @@ Every Practix prototype MUST use this stack:
 | Routing | React Router | 7.x |
 
 ### Why This Stack Matters
-The Practix Hub and Meridian MMM both use React + Tailwind + Recharts + Lucide. Using the same stack means components can be extracted from prototypes into the platform with minimal rewrite. Do NOT use:
+Practix Portal and Practix MMM both use React + Tailwind + Recharts + Lucide. Using the same stack means components can be extracted from prototypes into the platform with minimal rewrite. Do NOT use:
 - Material UI / MUI
 - Chakra UI
 - Bootstrap
@@ -69,7 +69,7 @@ my-prototype/
 │   │   ├── layout/
 │   │   │   ├── Layout.jsx       # Main layout wrapper
 │   │   │   ├── Sidebar.jsx      # Dark sidebar navigation
-│   │   │   └── Header.jsx       # Top header bar (optional — Hub uses sidebar-only)
+│   │   │   └── Header.jsx       # Top header bar (optional — Portal uses sidebar-only)
 │   │   ├── shared/
 │   │   │   ├── KPICard.jsx      # Metric display card
 │   │   │   ├── StatusBadge.jsx  # Health/status indicators
@@ -111,13 +111,13 @@ export default App
 ## Deployment Target
 Prototypes should deploy to Netlify for quick sharing. Use the Practix subdomain pattern:
 - `[tool-name].collectivemeasuresqa.netlify.app` for QA/review
-- Production integration happens later via the Hub team
+- Production integration happens later via the Portal team
 
 ## Key Principles
 
-1. **Match the Hub layout** — dark sidebar on left, light content on right. No top-nav-only layouts.
+1. **Match the Portal layout** — dark sidebar on left, light content on right. No top-nav-only layouts.
 2. **Use Tailwind utilities** — no custom CSS files per component. All styling via className.
-3. **Lucide icons only** — consistent with both Hub and Meridian.
+3. **Lucide icons only** — consistent with both Portal and MMM.
 4. **Recharts for all charts** — matches the platform's data viz library.
 5. **Slate color palette** — the platform's neutral foundation. Not gray, not zinc. Slate.
 6. **No custom fonts** — system font stack only (Tailwind default).
