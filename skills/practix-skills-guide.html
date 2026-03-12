@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CM AI Skills — Practix Design System Guide</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwindcss.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  .color-chip { width: 40px; height: 40px; border-radius: 8px; border: 1px solid #e2e8f0; }
+  pre { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 13px; line-height: 1.6; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  .inline-code { background: #f1f5f9; color: #0f172a; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 8px 12px; font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #e2e8f0; }
+  td { padding: 8px 12px; font-size: 14px; color: #334155; border-bottom: 1px solid #f1f5f9; }
+  .checklist-item { display: flex; align-items: flex-start; gap: 8px; padding: 4px 0; }
+  .checklist-item::before { content: "☐"; color: #94a3b8; font-size: 16px; flex-shrink: 0; }
+</style>
+</head>
+<body class="bg-slate-100 min-h-screen flex">
+
+<!-- Sidebar / TOC -->
+<aside class="w-64 bg-slate-800 text-white sticky top-0 h-screen flex flex-col overflow-y-auto flex-shrink-0">
+  <div class="px-4 py-4 flex items-center gap-3">
+    <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+      <span class="text-white font-bold text-sm">P</span>
+    </div>
+    <div>
+      <div class="text-lg font-bold">Practix</div>
+      <div class="text-xs text-slate-400 font-medium tracking-wider">AI SKILLS GUIDE</div>
+    </div>
+  </div>
+
+  <nav class="flex-1 px-3 py-2 space-y-1">
+    <a href="#getting-started" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Getting Started</a>
+    <a href="#scaffold" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Prototype Scaffold</a>
+    <a href="#colors" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Color System</a>
+    <a href="#typography" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Typography</a>
+    <a href="#spacing" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Spacing &amp; Layout</a>
+    <a href="#components" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Component Patterns</a>
+    <a href="#dataviz" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Data Visualization</a>
+    <a href="#formatters" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Number Formatting</a>
+    <a href="#checklist" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">Quality Checklist</a>
+  </nav>
+
+  <div class="p-3 border-t border-slate-700">
+    <a href="https://github.com/Collective-Measures/cm_ai_skills" target="_blank" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">
+      GitHub Repo ↗
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<div class="flex-1 flex flex-col min-h-screen">
+  <header class="bg-slate-800 shadow-sm h-16 px-6 flex items-center justify-between flex-shrink-0">
+    <span class="text-slate-400 text-sm">This page itself uses the Practix design system — it's a living example.</span>
+  </header>
+
+  <main class="flex-1 p-6 bg-slate-50 space-y-8 max-w-5xl">
+
+    <!-- GETTING STARTED -->
+    <section id="getting-started">
+      <h1 class="text-2xl font-bold text-slate-900 mb-2">CM AI Skills — Practix Design System Guide</h1>
+      <p class="text-sm text-slate-600 mb-6">Everything your Claude Code agent needs to build prototypes that look like they belong in the Practix platform.</p>
+
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5 space-y-4">
+        <h2 class="text-lg font-semibold text-slate-800">How to Use This</h2>
+        <p class="text-sm text-slate-600">Copy this prompt into your Claude Code session when starting a new prototype:</p>
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <p class="text-sm font-medium text-blue-800">"Build this following the Practix design system. Read the skills index at <code class="inline-code">https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/CLAUDE.md</code> and follow the skills it links to."</p>
+        </div>
+        <p class="text-sm text-slate-500">Your agent will read the index, fetch each skill document, and follow the patterns as it builds your prototype.</p>
+      </div>
+    </section>
+
+    <!-- SCAFFOLD -->
+    <section id="scaffold">
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div class="px-5 py-4 border-b border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-800">Prototype Scaffold</h2>
+          <p class="text-sm text-slate-500 mt-0.5">Required tech stack and project structure</p>
+        </div>
+        <div class="p-5 space-y-6">
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Required Tech Stack</h3>
+            <table>
+              <thead><tr><th>Layer</th><th>Technology</th><th>Version</th></tr></thead>
+              <tbody>
+                <tr><td>Framework</td><td>React</td><td>19.x</td></tr>
+                <tr><td>Build Tool</td><td>Vite</td><td>6.x</td></tr>
+                <tr><td>Styling</td><td>Tailwind CSS</td><td>4.x</td></tr>
+                <tr><td>Icons</td><td>Lucide React</td><td>0.530+</td></tr>
+                <tr><td>Charts</td><td>Recharts</td><td>3.x</td></tr>
+                <tr><td>Routing</td><td>React Router</td><td>7.x</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Do NOT Use</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-red-50 text-red-700 text-xs font-medium rounded-full border border-red-200">Material UI / MUI</span>
+              <span class="px-3 py-1 bg-red-50 text-red-700 text-xs font-medium rounded-full border border-red-200">Chakra UI</span>
+              <span class="px-3 py-1 bg-red-50 text-red-700 text-xs font-medium rounded-full border border-red-200">Bootstrap</span>
+              <span class="px-3 py-1 bg-red-50 text-red-700 text-xs font-medium rounded-full border border-red-200">Chart.js</span>
+              <span class="px-3 py-1 bg-red-50 text-red-700 text-xs font-medium rounded-full border border-red-200">Font Awesome</span>
+              <span class="px-3 py-1 bg-red-50 text-red-700 text-xs font-medium rounded-full border border-red-200">Next.js</span>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Project Init</h3>
+            <pre>npm create vite@latest my-prototype -- --template react
+cd my-prototype
+npm install
+npm install -D tailwindcss @tailwindcss/vite
+npm install react-router-dom recharts lucide-react</pre>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">File Structure</h3>
+            <pre>my-prototype/
+├── src/
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Layout.jsx       ← Main layout wrapper
+│   │   │   └── Sidebar.jsx      ← Dark sidebar navigation
+│   │   └── shared/
+│   │       ├── KPICard.jsx      ← Metric display card
+│   │       └── StatusBadge.jsx  ← Health/status indicators
+│   ├── pages/                   ← Route-level page components
+│   ├── utils/
+│   │   └── formatters.js        ← Number/currency formatting
+│   ├── App.jsx                  ← Root with router + layout
+│   └── index.css                ← Tailwind import only
+├── vite.config.js
+└── package.json</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLORS -->
+    <section id="colors">
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div class="px-5 py-4 border-b border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-800">Color System</h2>
+          <p class="text-sm text-slate-500 mt-0.5">The Practix platform uses Tailwind's <strong>slate</strong> scale — NOT gray, NOT zinc</p>
+        </div>
+        <div class="p-5 space-y-6">
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Slate Neutrals (Foundation)</h3>
+            <div class="grid grid-cols-5 md:grid-cols-10 gap-3">
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#f8fafc"></div><div class="text-xs text-slate-500 mt-1">50</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#f1f5f9"></div><div class="text-xs text-slate-500 mt-1">100</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#e2e8f0"></div><div class="text-xs text-slate-500 mt-1">200</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#cbd5e1"></div><div class="text-xs text-slate-500 mt-1">300</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#94a3b8"></div><div class="text-xs text-slate-500 mt-1">400</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#64748b"></div><div class="text-xs text-slate-500 mt-1">500</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#475569"></div><div class="text-xs text-slate-500 mt-1">600</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#334155"></div><div class="text-xs text-slate-500 mt-1">700</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#1e293b"></div><div class="text-xs text-slate-500 mt-1">800</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#0f172a"></div><div class="text-xs text-slate-500 mt-1">900</div></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Primary Accent: Blue</h3>
+            <div class="grid grid-cols-5 gap-3">
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#eff6ff"></div><div class="text-xs text-slate-500 mt-1">50</div><div class="text-xs text-slate-400">Selected bg</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#dbeafe"></div><div class="text-xs text-slate-500 mt-1">100</div><div class="text-xs text-slate-400">Range fill</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#60a5fa"></div><div class="text-xs text-slate-500 mt-1">400</div><div class="text-xs text-slate-400">Logo accent</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#2563eb"></div><div class="text-xs text-slate-500 mt-1">600</div><div class="text-xs text-slate-400">Buttons/active</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#1d4ed8"></div><div class="text-xs text-slate-500 mt-1">700</div><div class="text-xs text-slate-400">Hover</div></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Secondary Accent: Teal</h3>
+            <div class="grid grid-cols-4 gap-3">
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#ccfbf1"></div><div class="text-xs text-slate-500 mt-1">100</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#14b8a6"></div><div class="text-xs text-slate-500 mt-1">500</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#0d9488"></div><div class="text-xs text-slate-500 mt-1">600</div></div>
+              <div class="text-center"><div class="color-chip mx-auto" style="background:#0f766e"></div><div class="text-xs text-slate-500 mt-1">700</div></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Status Colors</h3>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+              <div class="rounded-lg p-3 bg-green-100 border border-green-200">
+                <div class="text-xs font-semibold text-green-800">Success</div>
+                <div class="text-xs text-green-700 mt-1">green-100 / green-800</div>
+              </div>
+              <div class="rounded-lg p-3 bg-red-50 border border-red-200">
+                <div class="text-xs font-semibold text-red-800">Error</div>
+                <div class="text-xs text-red-700 mt-1">red-50 / red-700</div>
+              </div>
+              <div class="rounded-lg p-3 bg-amber-50 border border-orange-200">
+                <div class="text-xs font-semibold text-orange-800">Warning</div>
+                <div class="text-xs text-orange-700 mt-1">amber-50 / orange-800</div>
+              </div>
+              <div class="rounded-lg p-3 bg-yellow-50 border border-yellow-200">
+                <div class="text-xs font-semibold text-yellow-700">Caution</div>
+                <div class="text-xs text-yellow-600 mt-1">yellow-50 / yellow-700</div>
+              </div>
+              <div class="rounded-lg p-3 bg-blue-50 border border-blue-200">
+                <div class="text-xs font-semibold text-blue-700">Info</div>
+                <div class="text-xs text-blue-600 mt-1">blue-50 / blue-700</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section id="typography">
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div class="px-5 py-4 border-b border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-800">Typography</h2>
+          <p class="text-sm text-slate-500 mt-0.5">System fonts only — no custom web fonts</p>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-baseline justify-between border-b border-slate-100 pb-3">
+              <span class="text-xl font-semibold text-slate-800">Page Title</span>
+              <code class="inline-code">text-xl font-semibold text-slate-800</code>
+            </div>
+            <div class="flex items-baseline justify-between border-b border-slate-100 pb-3">
+              <span class="text-lg font-semibold text-slate-800">Section Heading</span>
+              <code class="inline-code">text-lg font-semibold text-slate-800</code>
+            </div>
+            <div class="flex items-baseline justify-between border-b border-slate-100 pb-3">
+              <span class="text-sm font-medium text-slate-600">Card Title</span>
+              <code class="inline-code">text-sm font-medium text-slate-600</code>
+            </div>
+            <div class="flex items-baseline justify-between border-b border-slate-100 pb-3">
+              <span class="text-2xl font-bold text-slate-900" style="font-variant-numeric:tabular-nums">$4.23MM</span>
+              <code class="inline-code">text-2xl font-bold text-slate-900 tabular-nums</code>
+            </div>
+            <div class="flex items-baseline justify-between border-b border-slate-100 pb-3">
+              <span class="text-sm text-slate-600">Body text and descriptions</span>
+              <code class="inline-code">text-sm text-slate-600</code>
+            </div>
+            <div class="flex items-baseline justify-between border-b border-slate-100 pb-3">
+              <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">LABEL TEXT</span>
+              <code class="inline-code">text-xs font-medium text-slate-500 uppercase tracking-wider</code>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="text-xs text-slate-400">Helper text / metadata</span>
+              <code class="inline-code">text-xs text-slate-400</code>
+            </div>
+          </div>
+          <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mt-4">
+            <p class="text-sm text-yellow-800"><strong>Critical:</strong> Always use <code class="inline-code">tabular-nums</code> on numeric values and currency amounts for proper column alignment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACING & LAYOUT -->
+    <section id="spacing">
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div class="px-5 py-4 border-b border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-800">Spacing &amp; Layout</h2>
+        </div>
+        <div class="p-5 space-y-6">
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">The Practix Layout</h3>
+            <!-- Live layout diagram using actual Practix styles -->
+            <div class="border border-slate-300 rounded-lg overflow-hidden" style="height:280px">
+              <div class="flex h-full">
+                <div class="bg-slate-800 text-white flex flex-col" style="width:160px">
+                  <div class="px-3 py-3 flex items-center gap-2">
+                    <div class="w-6 h-6 bg-blue-500 rounded flex items-center justify-center text-xs font-bold">P</div>
+                    <div>
+                      <div class="text-sm font-bold leading-none">Practix</div>
+                      <div class="text-[9px] text-slate-400 tracking-wider">TOOL NAME</div>
+                    </div>
+                  </div>
+                  <div class="px-2 space-y-0.5 flex-1">
+                    <div class="bg-slate-700 rounded px-2 py-1.5 text-xs">Dashboard</div>
+                    <div class="rounded px-2 py-1.5 text-xs text-slate-400">Analysis</div>
+                    <div class="rounded px-2 py-1.5 text-xs text-slate-400">Settings</div>
+                  </div>
+                  <div class="px-2 py-2 border-t border-slate-700">
+                    <div class="text-[10px] text-slate-500 px-2">w-64 · bg-slate-800</div>
+                  </div>
+                </div>
+                <div class="flex-1 flex flex-col">
+                  <div class="bg-slate-800 h-10 px-4 flex items-center justify-between">
+                    <span class="text-[10px] text-slate-500">h-16 · bg-slate-800</span>
+                    <div class="w-5 h-5 rounded-full bg-slate-600"></div>
+                  </div>
+                  <div class="flex-1 bg-slate-50 p-4">
+                    <div class="text-[10px] text-slate-400 mb-2">bg-slate-50 · p-6</div>
+                    <div class="grid grid-cols-3 gap-2">
+                      <div class="bg-white rounded border border-slate-200 p-2 shadow-sm">
+                        <div class="text-[9px] text-slate-500">Total Spend</div>
+                        <div class="text-sm font-bold text-slate-900">$4.23MM</div>
+                      </div>
+                      <div class="bg-white rounded border border-slate-200 p-2 shadow-sm">
+                        <div class="text-[9px] text-slate-500">Performance</div>
+                        <div class="text-sm font-bold text-slate-900">$3.18MM</div>
+                      </div>
+                      <div class="bg-white rounded border border-slate-200 p-2 shadow-sm">
+                        <div class="text-[9px] text-slate-500">Brand</div>
+                        <div class="text-sm font-bold text-slate-900">$1.05MM</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Page-Level Spacing</h3>
+              <table>
+                <tbody>
+                  <tr><td>Page padding</td><td><code class="inline-code">p-6</code> (24px)</td></tr>
+                  <tr><td>Section gap</td><td><code class="inline-code">space-y-6</code></td></tr>
+                  <tr><td>Card grid gap</td><td><code class="inline-code">gap-4</code> or <code class="inline-code">gap-6</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Component-Level</h3>
+              <table>
+                <tbody>
+                  <tr><td>Card padding</td><td><code class="inline-code">p-5</code> or <code class="inline-code">p-6</code></td></tr>
+                  <tr><td>Card border</td><td><code class="inline-code">border border-slate-200</code></td></tr>
+                  <tr><td>Card radius</td><td><code class="inline-code">rounded-lg</code></td></tr>
+                  <tr><td>Card shadow</td><td><code class="inline-code">shadow-sm</code></td></tr>
+                  <tr><td>Button padding</td><td><code class="inline-code">px-4 py-2</code></td></tr>
+                  <tr><td>Input padding</td><td><code class="inline-code">px-3 py-2</code></td></tr>
+                  <tr><td>Nav item padding</td><td><code class="inline-code">px-3 py-3</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section id="components">
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div class="px-5 py-4 border-b border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-800">Component Patterns</h2>
+          <p class="text-sm text-slate-500 mt-0.5">Live examples of standard Practix UI elements</p>
+        </div>
+        <div class="p-5 space-y-8">
+
+          <!-- KPI Cards -->
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">KPI Cards</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-sm font-medium text-slate-600">Total Spend</span>
+                </div>
+                <div class="text-2xl font-bold text-slate-900" style="font-variant-numeric:tabular-nums">$4.23MM</div>
+                <div class="flex items-center gap-1.5 mt-2">
+                  <span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-green-100 text-green-800">+12.5%</span>
+                  <span class="text-xs text-slate-400">vs. prior period</span>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-sm font-medium text-slate-600">Performance</span>
+                </div>
+                <div class="text-2xl font-bold text-slate-900" style="font-variant-numeric:tabular-nums">$3.18MM</div>
+                <div class="flex items-center gap-1.5 mt-2">
+                  <span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-red-100 text-red-800">-2.1%</span>
+                  <span class="text-xs text-slate-400">vs. prior period</span>
+                </div>
+              </div>
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-sm font-medium text-slate-600">Brand</span>
+                </div>
+                <div class="text-2xl font-bold text-slate-900" style="font-variant-numeric:tabular-nums">$1.05MM</div>
+                <div class="flex items-center gap-1.5 mt-2">
+                  <span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-green-100 text-green-800">+8.3%</span>
+                  <span class="text-xs text-slate-400">vs. prior period</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Health Badges -->
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Health Badges (5-Tier)</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>95 Excellent</span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>82 Good</span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-700"><span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>65 Fair</span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>45 Needs Attention</span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>22 Critical</span>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Buttons</h3>
+            <div class="flex flex-wrap gap-3 items-center">
+              <button class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors">Primary Action</button>
+              <button class="inline-flex items-center gap-2 px-4 py-2 border border-slate-300 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-50 transition-colors">Secondary</button>
+              <button class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors">Destructive</button>
+              <button class="p-2 rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-colors border border-slate-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              </button>
+              <button disabled class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg opacity-50 cursor-not-allowed">Disabled</button>
+            </div>
+          </div>
+
+          <!-- Form Inputs -->
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Form Inputs</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
+              <div class="space-y-1.5">
+                <label class="block text-sm font-medium text-slate-700">Text Input</label>
+                <input type="text" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-slate-400" placeholder="Enter value...">
+              </div>
+              <div class="space-y-1.5">
+                <label class="block text-sm font-medium text-slate-700">Select</label>
+                <select class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Data Table</h3>
+            <div class="bg-white rounded-lg border border-slate-200 overflow-hidden">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-slate-200 bg-slate-50">
+                    <th class="text-left px-5 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Channel</th>
+                    <th class="text-right px-5 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Spend</th>
+                    <th class="text-right px-5 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">Revenue</th>
+                    <th class="text-right px-5 py-3 text-xs font-medium text-slate-500 uppercase tracking-wide">ROAS</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-5 py-3 text-sm text-slate-700">Paid Search</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">$1.23MM</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">$4.56MM</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">3.71x</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-5 py-3 text-sm text-slate-700">Social Media</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">$890.00K</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">$2.14MM</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">2.40x</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-5 py-3 text-sm text-slate-700">Display</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">$456.00K</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">$623.00K</td>
+                    <td class="px-5 py-3 text-sm text-slate-700 text-right" style="font-variant-numeric:tabular-nums">1.37x</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Tabs</h3>
+            <div class="border-b border-slate-200">
+              <nav class="flex gap-6 px-1">
+                <button class="py-3 text-sm font-medium border-b-2 border-blue-600 text-blue-600">Overview</button>
+                <button class="py-3 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700">Details</button>
+                <button class="py-3 text-sm font-medium border-b-2 border-transparent text-slate-500 hover:text-slate-700">Settings</button>
+              </nav>
+            </div>
+          </div>
+
+          <!-- States -->
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">States</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="animate-pulse space-y-3 bg-white rounded-lg border border-slate-200 p-4">
+                <div class="text-xs text-slate-400 mb-2">Loading skeleton</div>
+                <div class="h-4 bg-slate-200 rounded w-1/3"></div>
+                <div class="h-8 bg-slate-200 rounded w-1/2"></div>
+                <div class="h-3 bg-slate-200 rounded w-1/4"></div>
+              </div>
+              <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                <div class="text-xs text-slate-400 mb-2">Error state</div>
+                <span class="text-sm font-medium text-red-700">Something went wrong</span>
+                <p class="text-sm text-red-600 mt-1">Error details here.</p>
+              </div>
+              <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <div class="text-xs text-slate-400 mb-2">Warning banner</div>
+                <p class="text-sm font-medium text-yellow-800">Heads up</p>
+                <p class="text-sm text-yellow-700 mt-1">Additional context.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA VIZ -->
+    <section id="dataviz">
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div class="px-5 py-4 border-b border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-800">Data Visualization</h2>
+          <p class="text-sm text-slate-500 mt-0.5">Chart colors and Recharts configuration</p>
+        </div>
+        <div class="p-5 space-y-6">
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Chart Series Colors (in order)</h3>
+            <div class="flex gap-3 flex-wrap">
+              <div class="flex items-center gap-2"><div class="w-6 h-6 rounded" style="background:#3b82f6"></div><span class="text-xs text-slate-600">blue-500</span></div>
+              <div class="flex items-center gap-2"><div class="w-6 h-6 rounded" style="background:#14b8a6"></div><span class="text-xs text-slate-600">teal-500</span></div>
+              <div class="flex items-center gap-2"><div class="w-6 h-6 rounded" style="background:#8b5cf6"></div><span class="text-xs text-slate-600">violet-500</span></div>
+              <div class="flex items-center gap-2"><div class="w-6 h-6 rounded" style="background:#f59e0b"></div><span class="text-xs text-slate-600">amber-500</span></div>
+              <div class="flex items-center gap-2"><div class="w-6 h-6 rounded" style="background:#ef4444"></div><span class="text-xs text-slate-600">red-500</span></div>
+              <div class="flex items-center gap-2"><div class="w-6 h-6 rounded" style="background:#10b981"></div><span class="text-xs text-slate-600">emerald-500</span></div>
+              <div class="flex items-center gap-2"><div class="w-6 h-6 rounded" style="background:#6366f1"></div><span class="text-xs text-slate-600">indigo-500</span></div>
+              <div class="flex items-center gap-2"><div class="w-6 h-6 rounded" style="background:#ec4899"></div><span class="text-xs text-slate-600">pink-500</span></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Semantic Chart Colors</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full" style="background:#3b82f6"></div><span class="text-sm text-slate-600">Revenue</span></div>
+              <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full" style="background:#ef4444"></div><span class="text-sm text-slate-600">Spend</span></div>
+              <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full" style="background:#10b981"></div><span class="text-sm text-slate-600">ROI</span></div>
+              <div class="flex items-center gap-2"><div class="w-4 h-4 rounded-full" style="background:#94a3b8"></div><span class="text-sm text-slate-600">Forecast</span></div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Chart Configuration Standards</h3>
+            <table>
+              <thead><tr><th>Element</th><th>Value</th></tr></thead>
+              <tbody>
+                <tr><td>Grid lines</td><td><code class="inline-code">strokeDasharray="3 3" stroke="#f1f5f9"</code></td></tr>
+                <tr><td>Axis text</td><td><code class="inline-code">fontSize: 10, fill: '#94a3b8'</code></td></tr>
+                <tr><td>Y-axis line</td><td><code class="inline-code">axisLine={false}</code></td></tr>
+                <tr><td>Line dots</td><td><code class="inline-code">dot={false}</code></td></tr>
+                <tr><td>Bar radius</td><td><code class="inline-code">radius={[4, 4, 0, 0]}</code></td></tr>
+                <tr><td>Tooltip border</td><td><code class="inline-code">borderRadius: 8, border: '1px solid #e2e8f0'</code></td></tr>
+                <tr><td>Tooltip font</td><td><code class="inline-code">fontSize: 12</code></td></tr>
+                <tr><td>Legend font</td><td><code class="inline-code">fontSize: 12</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h4 class="text-sm font-semibold text-green-800 mb-2">DO</h4>
+              <ul class="text-sm text-green-700 space-y-1">
+                <li>Wrap in ResponsiveContainer</li>
+                <li>Use Practix chart palette</li>
+                <li>Format tooltip values with formatters</li>
+                <li>Put titles in card header, not chart</li>
+                <li>Use tabular-nums on rendered values</li>
+              </ul>
+            </div>
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+              <h4 class="text-sm font-semibold text-red-800 mb-2">DON'T</h4>
+              <ul class="text-sm text-red-700 space-y-1">
+                <li>Use default Recharts colors</li>
+                <li>Add 3D effects or bar gradients</li>
+                <li>Use pie charts for 5+ segments</li>
+                <li>Use Chart.js, D3, or Plotly</li>
+                <li>Leave default Legend/Tooltip styling</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMATTERS -->
+    <section id="formatters">
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div class="px-5 py-4 border-b border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-800">Number Formatting</h2>
+          <p class="text-sm text-slate-500 mt-0.5">Standard formatters — copy utils/formatters.js into every prototype</p>
+        </div>
+        <div class="p-5">
+          <table>
+            <thead><tr><th>Function</th><th>Input</th><th>Output</th><th>Use For</th></tr></thead>
+            <tbody>
+              <tr><td><code class="inline-code">fmtCurrency()</code></td><td>1234567</td><td style="font-variant-numeric:tabular-nums">$1.23MM</td><td>Dollar amounts</td></tr>
+              <tr><td><code class="inline-code">fmtCurrency()</code></td><td>1234</td><td style="font-variant-numeric:tabular-nums">$1.23K</td><td>Dollar amounts</td></tr>
+              <tr><td><code class="inline-code">fmtCompact()</code></td><td>1234567</td><td style="font-variant-numeric:tabular-nums">1.2M</td><td>Non-dollar metrics</td></tr>
+              <tr><td><code class="inline-code">fmtPct()</code></td><td>0.1234</td><td style="font-variant-numeric:tabular-nums">12.3%</td><td>Percentages</td></tr>
+              <tr><td><code class="inline-code">fmtCurrencyFull()</code></td><td>1234.5</td><td style="font-variant-numeric:tabular-nums">$1,234.50</td><td>Exact dollar values</td></tr>
+              <tr><td><code class="inline-code">fmtNumber()</code></td><td>1234567</td><td style="font-variant-numeric:tabular-nums">1,234,567</td><td>Integer counts</td></tr>
+              <tr><td>Any formatter</td><td>null / NaN</td><td>--</td><td>Missing data</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section id="checklist">
+      <div class="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div class="px-5 py-4 border-b border-slate-200">
+          <h2 class="text-lg font-semibold text-slate-800">Quality Checklist</h2>
+          <p class="text-sm text-slate-500 mt-0.5">Run through before sharing any prototype for review</p>
+        </div>
+        <div class="p-5 space-y-6">
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-2">Layout &amp; Structure</h3>
+            <div class="space-y-1 text-sm text-slate-700">
+              <div class="checklist-item">Dark sidebar present — w-64, bg-slate-800, sticky, full height</div>
+              <div class="checklist-item">Sidebar has logo area with tool name subtitle</div>
+              <div class="checklist-item">Header bar present — h-16, bg-slate-800</div>
+              <div class="checklist-item">Content area — bg-slate-50 with p-6 padding</div>
+              <div class="checklist-item">No top-nav-only layout — sidebar is mandatory</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-2">Colors</h3>
+            <div class="space-y-1 text-sm text-slate-700">
+              <div class="checklist-item">Using slate scale — NOT gray, NOT zinc</div>
+              <div class="checklist-item">Primary accent is blue-600</div>
+              <div class="checklist-item">Status colors: green/red/amber/yellow/blue</div>
+              <div class="checklist-item">White cards on slate-50 background</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-2">Typography</h3>
+            <div class="space-y-1 text-sm text-slate-700">
+              <div class="checklist-item">No custom fonts — system font stack only</div>
+              <div class="checklist-item">tabular-nums on all numeric values</div>
+              <div class="checklist-item">Body text is text-sm, not text-base</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-2">Components</h3>
+            <div class="space-y-1 text-sm text-slate-700">
+              <div class="checklist-item">Cards use rounded-lg border border-slate-200 shadow-sm</div>
+              <div class="checklist-item">Buttons: blue-600 primary, border secondary</div>
+              <div class="checklist-item">Inputs have focus:ring-2 focus:ring-blue-500</div>
+              <div class="checklist-item">Loading states use animate-pulse skeletons</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-2">Data &amp; Charts</h3>
+            <div class="space-y-1 text-sm text-slate-700">
+              <div class="checklist-item">Using Recharts — not Chart.js, D3, or Plotly</div>
+              <div class="checklist-item">Chart colors match Practix palette</div>
+              <div class="checklist-item">Numbers formatted with fmtCurrency/fmtCompact/fmtPct</div>
+              <div class="checklist-item">Null/NaN values show "--"</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-2">Icons &amp; Code</h3>
+            <div class="space-y-1 text-sm text-slate-700">
+              <div class="checklist-item">Using Lucide React — not Font Awesome or Heroicons</div>
+              <div class="checklist-item">No inline styles — all Tailwind utilities</div>
+              <div class="checklist-item">No CSS files per component</div>
+              <div class="checklist-item">No console.log left in code</div>
+            </div>
+          </div>
+
+          <!-- Common mistakes -->
+          <div>
+            <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider mb-3">Common Mistakes</h3>
+            <table>
+              <thead><tr><th>Mistake</th><th>Correct Approach</th></tr></thead>
+              <tbody>
+                <tr><td class="text-red-700">MUI / Bootstrap components</td><td class="text-green-700">Tailwind utility classes</td></tr>
+                <tr><td class="text-red-700">Top navigation only</td><td class="text-green-700">Always use left sidebar</td></tr>
+                <tr><td class="text-red-700">gray-100 content background</td><td class="text-green-700">slate-50</td></tr>
+                <tr><td class="text-red-700">Default Recharts colors</td><td class="text-green-700">Practix chart palette</td></tr>
+                <tr><td class="text-red-700">Numbers without formatting</td><td class="text-green-700">fmtCurrency / fmtCompact / fmtPct</td></tr>
+                <tr><td class="text-red-700">Charts without card wrappers</td><td class="text-green-700">White card with header above chart</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center text-xs text-slate-400 py-4">
+      CM AI Skills — <a href="https://github.com/Collective-Measures/cm_ai_skills" class="text-blue-500 hover:text-blue-600">github.com/Collective-Measures/cm_ai_skills</a>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

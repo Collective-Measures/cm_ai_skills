@@ -30,6 +30,11 @@ Tell your Claude Code agent: "Build this following the Practix design system. Re
 | Data Visualization | https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/skills/practix-data-viz.md | Recharts patterns, KPI cards, and number formatting |
 | Quality Checklist | https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/skills/practix-quality-checklist.md | Pre-review checklist to catch common prototype issues |
 
+## Human-Readable Version
+A visual HTML guide is available in Practix Portal under Training > "Platform AI Developer Docs".
+Source file: `skills/practix-skills-guide.html`
+When skills are updated, this HTML must be regenerated and copied to `~/code/cm_practix_hub/practixhub-intranet/public/ai-developer-docs.html`.
+
 ## Platform References
 - **Practix Portal** (main portal): `~/code/cm_practix_hub`
 - **Practix MMM** (analytics tool): `~/code/cm_meridian`
