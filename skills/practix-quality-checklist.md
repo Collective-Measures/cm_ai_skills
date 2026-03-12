@@ -93,7 +93,7 @@ Run through this checklist before sharing any prototype for review. It catches t
 
 ## Quick Visual Test
 
-Open your prototype next to https://hub.collectivemeasures.com (Practix Portal) and ask:
+Open your prototype next to the live Practix Portal and ask:
 
 1. Does my sidebar look the same? (dark, same width, same nav pattern)
 2. Does my content area feel the same? (light background, white cards, same spacing)

@@ -33,5 +33,5 @@ Tell your Claude Code agent: "Build this following the Practix design system. Re
 ## Platform References
 - **Practix Portal** (main portal): `~/code/cm_practix_hub`
 - **Practix MMM** (analytics tool): `~/code/cm_meridian`
-- **Live Portal**: https://hub.collectivemeasures.com
-- **Live MMM**: https://mmm.collectivemeasures.com
+- **Live Portal**: Internal — ask your team lead for access
+- **Live MMM**: Internal — ask your team lead for access

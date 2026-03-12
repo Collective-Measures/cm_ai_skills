@@ -110,7 +110,7 @@ export default App
 
 ## Deployment Target
 Prototypes should deploy to Netlify for quick sharing. Use the Practix subdomain pattern:
-- `[tool-name].collectivemeasuresqa.netlify.app` for QA/review
+- Deploy to your team's preferred hosting for QA/review
 - Production integration happens later via the Portal team
 
 ## Key Principles

@@ -22,7 +22,7 @@ export default function Layout() {
         <header className="bg-slate-800 shadow-sm h-16 px-6 flex items-center justify-end">
           {/* User profile / breadcrumbs go here */}
           <div className="flex items-center gap-3">
-            <span className="text-sm text-slate-300">user@collectivemeasures.com</span>
+            <span className="text-sm text-slate-300">user@example.com</span>
             <div className="w-8 h-8 rounded-full bg-slate-600 flex items-center justify-center text-white text-sm font-medium">
               U
             </div>
