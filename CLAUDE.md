@@ -19,7 +19,6 @@ https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/CLAUDE.m
 ### For Non-Developers
 Tell your Claude Code agent: "Build this following the Practix design system. Read the skills index at https://raw.githubusercontent.com/Collective-Measures/cm_ai_skills/main/CLAUDE.md and follow the skills it links to."
 
-Skills are also available as formatted Google Docs in the shared Drive folder: https://drive.google.com/drive/u/0/folders/0AGf8K3k5ulRuUk9PVA
 
 ## Skills Index
 
